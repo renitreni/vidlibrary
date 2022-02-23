@@ -19,15 +19,39 @@ class PermissionsTableSeeder extends Seeder
          */
         $Permissionitems = [
             [
-                'name'        => 'Can View Manage Users',
+                'name'        => 'Can Manage Users',
                 'slug'        => 'view.manage.users',
-                'description' => 'Can view manage users',
+                'description' => 'Can manage users',
                 'model'       => 'Permission',
             ],
             [
                 'name'        => 'Can View Roles',
                 'slug'        => 'view.roles',
                 'description' => 'Can view roles',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can View Users',
+                'slug'        => 'view.users',
+                'description' => 'Can view users',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Verify Videos',
+                'slug'        => 'can.verify.videos',
+                'description' => 'Can verify videos',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Manage Payouts',
+                'slug'        => 'can.manage.payouts',
+                'description' => 'Can manage payouts',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Can Manage Contents',
+                'slug'        => 'can.manage.contents',
+                'description' => 'Can manage contents',
                 'model'       => 'Permission',
             ],
         ];

@@ -16,6 +16,18 @@
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
 
+                @permission('can.verify.videos')
+                    <x-jet-nav-link href="{{ route('verify-videos') }}" :active="request()->routeIs('verify-videos')">
+                        {{ __('Verify Videos') }}
+                    </x-jet-nav-link>
+                @endpermission
+
+                @permission('can.manage.payouts')
+                <x-jet-nav-link href="{{ route('pay-outs') }}" :active="request()->routeIs('pay-outs')">
+                    {{ __('Pay Outs') }}
+                </x-jet-nav-link>
+                @endpermission
+
                 <x-nav-dropdown-link id="manageUserDropdown" :active="request()->routeIs('users')">
                     <x-slot name="trigger">
                         Manage Users

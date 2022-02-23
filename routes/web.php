@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Homepage;
+use App\Http\Livewire\PayOuts;
 use App\Http\Livewire\PermissionEdit;
 use App\Http\Livewire\RoleCreate;
 use App\Http\Livewire\RoleEdit;
@@ -9,6 +10,7 @@ use App\Http\Livewire\Roles;
 use App\Http\Livewire\UserCreate;
 use App\Http\Livewire\UserEdit;
 use App\Http\Livewire\UserForm;
+use App\Http\Livewire\VerifyVideos;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +31,12 @@ Route::get('/about', Homepage::class)->name('about');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', Dashboard::class)->name('dashboard');
+    });
+    Route::prefix('verify-videos')->group(function () {
+        Route::get('/', VerifyVideos::class)->name('verify-videos')->middleware('permission:can.verify.videos');
+    });
+    Route::prefix('pay-outs')->group(function () {
+        Route::get('/', PayOuts::class)->name('pay-outs')->middleware('permission:can.manage.payouts');
     });
     Route::prefix('manage-users')->group(function () {
         Route::get('/users', fn() => view('users'))->name('users');

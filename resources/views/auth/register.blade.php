@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <style>
+        body {
+            background-color: #4a4a54;
+        }
+    </style>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -24,6 +29,17 @@
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
                                  :value="old('email')" required />
                     <x-jet-input-error for="email"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Phone') }}" />
+
+                    <x-jet-input class="{{ $errors->has('phone') ? 'is-invalid' : '' }}" type="phone" name="phone"
+                                 :value="old('phone')" required />
+                    <div class="alert alert-dark mt-2">
+                        One phone number per account. This could not be updated once registered. Gcash account phone number is a must.
+                    </div>
+                    <x-jet-input-error for="phone"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">

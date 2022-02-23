@@ -57,10 +57,16 @@
                     <a href="{{ route('about') }}">About</a>
                 </li>
             </ul>
-            {{--            <ul class="navbar-nav justify-content-end">--}}
-            {{--                <li><a href="#"><i class="icon_search"></i></a></li>--}}
-            {{--                <li><a href="#"><i class="icon_bag_alt"></i></a></li>--}}
-            {{--            </ul>--}}
+            @guest()
+                <ul class="navbar-nav justify-content-end">
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Regsiter</a></li>
+                </ul>
+            @else
+                <ul class="navbar-nav justify-content-end">
+                    <li><a href="{{ route('dashboard') }}">My Account</a></li>
+                </ul>
+            @endauth
         </div>
     </nav>
 </header>

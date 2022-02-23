@@ -15,6 +15,7 @@ class Dashboard extends Component
     public $tempfile;
     public $title;
     public $myVideos;
+    public $totalViews;
 
     public function mount()
     {
@@ -71,12 +72,14 @@ class Dashboard extends Component
 
     public function updateDetails()
     {
-        $results = MyVideos::find(auth()->id())->get();
+        $results = MyVideos::find(auth()->id());
+        $results = $results ? $results->get() : [];
         foreach ($results as $result) {
             $info = json_decode((new DoodstreamAPI())->FileInfo($result['filecode']));
             MyVideos::where('id', $result['id'])->update([
                 'views' => $info->result[0]->views,
             ]);
         }
+        $this->totalViews = MyVideos::where('uploaded_by', auth()->id())->sum('views');
     }
 }
