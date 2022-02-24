@@ -28,19 +28,21 @@
                 </x-jet-nav-link>
                 @endpermission
 
-                <x-nav-dropdown-link id="manageUserDropdown" :active="request()->routeIs('users')">
-                    <x-slot name="trigger">
-                        Manage Users
-                    </x-slot>
-                    <x-slot name="content">
-                        <x-jet-dropdown-link href="{{ route('users') }}">
-                            {{ __('Users') }}
-                        </x-jet-dropdown-link>
-                        <x-jet-dropdown-link href="{{ route('roles') }}">
-                            {{ __('Roles') }}
-                        </x-jet-dropdown-link>
-                    </x-slot>
-                </x-nav-dropdown-link>
+                @permission('can.manage.users')
+                    <x-nav-dropdown-link id="manageUserDropdown" :active="request()->routeIs('users')">
+                        <x-slot name="trigger">
+                            Manage Users
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-jet-dropdown-link href="{{ route('users') }}">
+                                {{ __('Users') }}
+                            </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('roles') }}">
+                                {{ __('Roles') }}
+                            </x-jet-dropdown-link>
+                        </x-slot>
+                    </x-nav-dropdown-link>
+                @endpermission
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -19,6 +19,10 @@
                 <div class="modal-body">
                     <div clas="row">
                         <div class="mb-3">
+                            <label>Title</label>
+                            <input class="form-control" wire:model="title">
+                        </div>
+                        <div class="mb-3">
                             <label>Status</label>
                             <select class="form-select" wire:model="is_published">
                                 <option value="0">Pending</option>

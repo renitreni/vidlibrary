@@ -20,16 +20,20 @@ class VerifyVideos extends Component
 
     public function bindEdit($id)
     {
-        $result               = MyVideos::find($id)->first();
+        $result = MyVideos::find($id)->first();
         $this->protectedEmbed = str_replace('/d/', '/e/', $result['download_url']);
-        $this->is_published   = $result['is_published'];
-        $this->extension      = $result['extension'];
-        $this->myVideoId      = $result['id'];
+        $this->is_published = $result['is_published'];
+        $this->title = $result['title'];
+        $this->extension = $result['extension'];
+        $this->myVideoId = $result['id'];
     }
 
     public function update()
     {
-        MyVideos::where('id', $this->myVideoId)->update(['is_published' => $this->is_published]);
+        MyVideos::where('id', $this->myVideoId)->update([
+            'is_published' => $this->is_published,
+            'title'        => $this->title,
+        ]);
         $this->emit('refreshDatatable');
     }
 }

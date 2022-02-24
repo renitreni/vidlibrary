@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\PayoutHistory;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Doodstream\DoodstreamAPI;
@@ -16,14 +17,27 @@ class Dashboard extends Component
     public $title;
     public $myVideos;
     public $totalViews;
+    public $canPayout;
 
     public function mount()
     {
+        $this->canPayout = 0;
         $this->updateDetails();
     }
 
     public function render()
     {
+        $totalRequest = PayoutHistory::where('user_id', auth()->id())->sum('billed_views');
+
+//        $this->totalViews = 12342;
+//        $totalRequest     = 0;
+
+        $total = $this->totalViews - $totalRequest;
+
+        if ($total >= 10000) {
+            $this->canPayout = 1;
+        }
+
         return view('livewire.dashboard', [
             'myvideos' => MyVideos::query()
                 ->where('uploaded_by', auth()->id())
@@ -81,5 +95,20 @@ class Dashboard extends Component
             ]);
         }
         $this->totalViews = MyVideos::where('uploaded_by', auth()->id())->sum('views');
+    }
+
+    public function requestPayout()
+    {
+        $totalRequest = PayoutHistory::where('user_id', auth()->id())->sum('billed_views');
+
+        PayoutHistory::insert([
+            'user_id'      => auth()->id(),
+            'recent_views' => $this->totalViews,
+            'is_approved'  => 0,
+            'billed_views' => 10000,
+        ]);
+        session()->flash('message',
+            "Your Pay Out has been submitted. Please wait for the confirmation receipt. $totalRequest");
+        $this->emit('refreshDatatable');
     }
 }

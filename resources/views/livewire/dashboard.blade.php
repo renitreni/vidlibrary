@@ -4,23 +4,7 @@
     </x-slot>
 
     <div class="row">
-        <div class="col-md-3 d-flex flex-column">
-            <div>
-                <h4>3 Easy Steps on how to earn money with us:</h4>
-                <ol>
-                    <li><p>Upload a video and use an appropriate title.</p></li>
-                    <li><p>Wait us to verify your uploaded video.</p></li>
-                    <li>
-                        <p>For every 10k views gained of your <strong>Total Views</strong>, you are eligible to
-                            request payout of 250php. (e.g. 10K, 20K, 30k... and so on...)</p>
-                    </li>
-                </ol>
-            </div>
-            <div>
-                <button class="btn btn-success">Request Payout</button>
-            </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -46,12 +30,14 @@
                                      style="display: block">{{ $errors->first('tempfile') }}</div>
                             @endif
                         </div>
-                        <div class="mb-3 d-flex flex-row" wire:loading.attr="hidden">
-                            <button class="btn btn-info me-3" wire:click="uploadAPI">Upload</button>
+                        <div class="mb-3 d-flex flex-row" >
+                            <button class="btn btn-info me-3" wire:click="uploadAPI" wire:loading.attr="hidden">
+                                Upload
+                            </button>
+                            <div class="mb-3 my-auto me-3" wire:loading>
+                                Please Wait...
+                            </div>
                             <h5 class="my-auto">Total Views: {{ $totalViews }}</h5>
-                        </div>
-                        <div class="mb-3" wire:loading>
-                            Please Wait...
                         </div>
                         <div>
                             <div class="row">
@@ -91,7 +77,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-12">
-
+        <div class="col-md-4 d-flex flex-column">
+            <div>
+                <h4>3 Easy Steps on how to earn money with us:</h4>
+                <ol>
+                    <li><p>Upload a video and use an appropriate title.</p></li>
+                    <li><p>Wait us to verify your uploaded video.</p></li>
+                    <li>
+                        <p>For every 10k views gained of your <strong>Total Views</strong>, you are eligible to
+                            request payout of 250php. (e.g. 10K, 20K, 30k... and so on...)</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="mb-3">
+                <div class="d-grid gap-1">
+                    @if($canPayout)
+                        <button class="btn btn-success" wire:click="requestPayout">Request Payout</button>
+                    @else
+                        <button class="btn btn-secondary" disabled>Request Payout</button>
+                    @endif
+                </div>
+            </div>
+            <div>
+                <livewire:payout-history-table/>
+            </div>
         </div>
     </div>

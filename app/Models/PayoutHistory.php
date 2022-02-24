@@ -17,4 +17,9 @@ class PayoutHistory extends Model
         'receipt_path',
         'approved_by',
     ];
+
+    public function requestor()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
