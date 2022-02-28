@@ -55,17 +55,27 @@
                 <li class="nav-item @if(\Request::route()->getName() == 'about') active @endif">
                     <a href="{{ route('about') }}">About</a>
                 </li>
-            </ul>
-            @guest()
-                <ul class="navbar-nav justify-content-end">
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Regsiter</a></li>
-                </ul>
-            @else
-                <ul class="navbar-nav justify-content-end">
+                @guest()
+                    <li class="m-0 @if(\Request::route()->getName() == 'login') active @endif">
+                        <a href="{{ route('login') }}" class="font-weight-bold">Login</a>
+                    </li>
+                    <style>
+                        @media only screen and (max-width: 1026px) {
+                            #fadeshow1 {
+                                display: none;
+                            }
+                        }
+                    </style>
+                    <li class="mx-1" id="fadeshow1" style="color: white;font-size: large; ">
+                        |
+                    </li>
+                    <li class="@if(\Request::route()->getName() == 'register') active @endif">
+                        <a href="{{ route('register') }}" class="font-weight-bold">Register</a>
+                    </li>
+                @else
                     <li><a href="{{ route('dashboard') }}">My Account</a></li>
-                </ul>
-            @endauth
+                @endauth
+            </ul>
         </div>
     </nav>
 </header>
