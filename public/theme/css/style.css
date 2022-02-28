@@ -1,3 +1,11 @@
+
+
+.navbar-brand {
+    font-family: 'Barriecito', cursive !important;
+    font-size: 43px;
+    color: #2bc0a4 !important;
+}
+
 /*----------------------------------------------------
 @File: Default Styles
 @Author: Rocky
@@ -26,10 +34,10 @@ Table of Content:
 06/ feature
 07/ button
 08/ service
-09/ testimonials 
-10/ blog 
-11/ contact 
-12/ footer 
+09/ testimonials
+10/ blog
+11/ contact
+12/ footer
 =====================================================================*/
 /*----------------------------------------------------*/
 /*font Variables*/
@@ -448,7 +456,7 @@ i:before {
 /* Banner Area css
 ============================================================================================ */
 .banner_area {
-  background: url(../img/banner/banner-1.jpg) no-repeat scroll center center;
+  background: url(https://images.pexels.com/photos/4553619/pexels-photo-4553619.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat scroll center center;
   background-size: cover;
   position: relative;
   min-height: 400px;
@@ -1198,6 +1206,7 @@ i:before {
 ============================================================================================ */
 .static_area {
   padding: 100px 0px;
+    background-color: currentColor;
 }
 
 .static_main_content {

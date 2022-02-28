@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\AboutPage;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Homepage;
 use App\Http\Livewire\PayOuts;
@@ -11,6 +12,7 @@ use App\Http\Livewire\UserCreate;
 use App\Http\Livewire\UserEdit;
 use App\Http\Livewire\UserForm;
 use App\Http\Livewire\VerifyVideos;
+use App\Http\Livewire\VideoPage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +30,8 @@ use Intervention\Image\ImageManagerStatic;
 */
 
 Route::get('/', Homepage::class)->name('home');
-Route::get('/about', Homepage::class)->name('about');
+Route::get('/v/{slug}/{video}', VideoPage::class)->name('video');
+Route::get('/about', AboutPage::class)->name('about');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('dashboard')->group(function () {

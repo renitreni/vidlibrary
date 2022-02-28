@@ -64,6 +64,7 @@ class Dashboard extends Component
             $params = [
                 'title'           => $this->title,
                 'extension'       => $extension,
+                'slug'            => str_slug($this->title),
                 'filecode'        => $response['result'][0]->filecode,
                 'length'          => $response['result'][0]->length,
                 'size'            => $response['result'][0]->size,
@@ -75,7 +76,7 @@ class Dashboard extends Component
                 'views'           => 0,
                 'is_published'    => 0,
             ];
-            MyVideos::insert($params);
+            MyVideos::create($params);
 
             $this->tempfile = null;
             $this->title    = null;
