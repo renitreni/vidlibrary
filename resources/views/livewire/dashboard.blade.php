@@ -46,7 +46,7 @@
                                 @foreach ($myvideos as $video)
                                     <div class="col-md-3">
                                         <div class="card">
-                                            <img src="{{ $video->single_img }}" class="card-img-top"
+                                            <img src="{{ $video->single_img }}" class="card-img-top" height="220"
                                                  alt="{{ $video->title }}">
                                             <div class="card-body">
                                                 <h5 class="card-title">
