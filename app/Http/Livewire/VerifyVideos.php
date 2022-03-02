@@ -23,7 +23,7 @@ class VerifyVideos extends Component
 
     public function bindEdit($id)
     {
-        $result               = MyVideos::find($id)->with(['tags'])->first();
+        $result               = MyVideos::where('id',$id)->with(['tags'])->first();
         $this->protectedEmbed = str_replace('/d/', '/e/', $result['download_url']);
         $this->is_published   = $result['is_published'];
         $this->title          = $result['title'];

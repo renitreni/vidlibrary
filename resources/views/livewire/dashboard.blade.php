@@ -13,14 +13,14 @@
                                 {{ session('message') }}
                             </div>
                         @endif
-                        <div class="col-5 mb-2">
+                        <div class="col-md-5 mb-2">
                             <input type="text" class="form-control" wire:model="title"
                                    placeholder="Type In your title ..">
                             @if($errors->has('title'))
                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('title') }}</div>
                             @endif
                         </div>
-                        <div class="col-5 mb-2">
+                        <div class="col-md-5 mb-2">
                             <input type="file" class="form-control" wire:model="tempfile">
                             <div class="form-text">
                                 After Upload, your file is subject for verification. Max File size is 100MB only.
@@ -42,7 +42,7 @@
                         <div>
                             <div class="row">
                                 @foreach ($myvideos as $video)
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <div class="card">
                                             <img src="{{ $video->single_img }}" class="card-img-top"
                                                  alt="{{ $video->title }}">

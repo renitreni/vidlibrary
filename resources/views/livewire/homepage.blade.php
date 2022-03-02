@@ -25,18 +25,20 @@
                                 <div class="mb-2">
                                     <h3 class="text-white bg-info p-2">Latest Uploads</h3>
                                 </div>
-                                <div class="d-flex">
+                                <div class="row">
                                     @foreach($videos as $video)
-                                        <a href="{{ route('video', ['video' => $video['id'], 'slug' => $video['slug']]) }}"
-                                           class="d-flex flex-column m-3">
-                                            <img class="img-fluid" width="250" height="200"
-                                                 src="{{ $video['single_img'] }}"/>
-                                            <h5 class="text-white mt-2 fs-5">{{ $video['title'] }}</h5>
-                                            <label class="text-white">
-                                                <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
-                                                <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
-                                            </label>
-                                        </a>
+                                        <div class="col-sm-6 col-md-3">
+                                            <a href="{{ route('video', ['video' => $video['id'], 'slug' => $video['slug']]) }}"
+                                               class="d-flex flex-column m-3">
+                                                <img style="width: 100%;max-height: 200px;"
+                                                     src="{{ $video['single_img'] }}"/>
+                                                <h5 class="text-white mt-2 fs-5">{{ $video['title'] }}</h5>
+                                                <label class="text-white">
+                                                    <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
+                                                    <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
+                                                </label>
+                                            </a>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
