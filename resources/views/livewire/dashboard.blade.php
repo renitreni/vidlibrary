@@ -13,17 +13,25 @@
                                 {{ session('message') }}
                             </div>
                         @endif
-                        <div class="col-md-5 mb-2" wire:loading.remove>
+                        <div class="col-md-5 mb-2" wire:loading.remove wire:target="tempfile">
                             <input type="text" class="form-control" wire:model="title"
                                    placeholder="Type In your title ..">
                             @if($errors->has('title'))
                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('title') }}</div>
                             @endif
                         </div>
-                        <div class="col-md-5 mb-2">
+                        <div class="col-md-5 mb-2" x-data="{ isUploading: false, progress: 0 }"
+                             x-on:livewire-upload-start="isUploading = true"
+                             x-on:livewire-upload-finish="isUploading = false"
+                             x-on:livewire-upload-error="isUploading = false"
+                             x-on:livewire-upload-progress="progress = $event.detail.progress">
                             <input type="file" class="form-control" wire:model="tempfile">
                             <div class="form-text">
                                 After Upload, your file is subject for verification. Max File size is 100MB only.
+                            </div>
+                            <!-- Progress Bar -->
+                            <div x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
                             </div>
                             @if($errors->has('tempfile'))
                                 <div class="invalid-feedback"
