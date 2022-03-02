@@ -48,7 +48,7 @@ class Dashboard extends Component
     public function uploadAPI()
     {
         $this->validate([
-            'tempfile' => 'required|file|max:800000',
+            'tempfile' => 'required|file',
             'title'    => 'required|max:225',
         ]);
 

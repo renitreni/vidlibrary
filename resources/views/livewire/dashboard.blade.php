@@ -31,9 +31,11 @@
                             @endif
                         </div>
                         <div class="mb-3 d-flex flex-row" >
-                            <button class="btn btn-info me-3" wire:click="uploadAPI" wire:loading.remove>
-                                Upload
-                            </button>
+                            <div wire:loading.remove>
+                                <button class="btn btn-info me-3" wire:click="uploadAPI" wire:loading.remove>
+                                    Upload
+                                </button>
+                            </div>
                             <div class="mb-3 my-auto me-3" wire:loading>
                                 Please Wait...
                             </div>
