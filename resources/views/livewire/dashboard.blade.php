@@ -20,7 +20,7 @@
                                 <div class="invalid-feedback" style="display: block">{{ $errors->first('title') }}</div>
                             @endif
                         </div>
-                        <div class="col-md-5 mb-2">
+                        <div class="col-md-5 mb-2" wire:loading.remove>
                             <input type="file" class="form-control" wire:model="tempfile">
                             <div class="form-text">
                                 After Upload, your file is subject for verification. Max File size is 100MB only.
