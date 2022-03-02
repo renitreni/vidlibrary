@@ -48,7 +48,7 @@ class Dashboard extends Component
     public function uploadAPI()
     {
         $this->validate([
-            'tempfile' => 'required|file',
+            'tempfile' => 'required|file|mimes:mp4,mov,ogg,qt|max:102400',
             'title'    => 'required|max:225',
         ]);
 
