@@ -11,7 +11,7 @@ class Homepage extends Component
     {
         return view('livewire.homepage',
             [
-                'videos' => MyVideos::query()->orderBy('id')->where('is_published', 1)->paginate(20),
+                'videos' => MyVideos::query()->orderBy('updated_at', 'desc')->where('is_published', 1)->paginate(20),
             ])->layout('layouts.guest');
     }
 }
