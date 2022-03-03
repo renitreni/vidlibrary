@@ -8,6 +8,7 @@ use App\Http\Livewire\PermissionEdit;
 use App\Http\Livewire\RoleCreate;
 use App\Http\Livewire\RoleEdit;
 use App\Http\Livewire\Roles;
+use App\Http\Livewire\SearchPage;
 use App\Http\Livewire\UserCreate;
 use App\Http\Livewire\UserEdit;
 use App\Http\Livewire\UserForm;
@@ -32,6 +33,7 @@ use Intervention\Image\ImageManagerStatic;
 Route::get('/', Homepage::class)->name('home');
 Route::get('/v/{slug}/{video}', VideoPage::class)->name('video');
 Route::get('/about', AboutPage::class)->name('about');
+Route::get('/s', SearchPage::class)->name('search');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('dashboard')->group(function () {

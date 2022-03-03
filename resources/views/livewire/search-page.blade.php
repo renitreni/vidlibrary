@@ -23,23 +23,23 @@
                         <div class="static_main_content">
                             <div class="d-flex flex-column">
                                 <div class="mb-2">
-                                    <h3 class="text-white bg-info p-2">{{ $video['title'] }}</h3>
+                                    <h3 class="text-white bg-info p-2">Search: '{{ $tag ?? '' }}'</h3>
                                 </div>
-                                <div class="d-flex flex-column">
-                                    <iframe width="100%" height="420" src="{{ str_replace('/d/', '/e/', $video['download_url']) }}" scrolling="no" frameborder="0"
-                                            allowfullscreen="true">
-                                        Your browser does not support the video tag.
-                                    </iframe>
-                                    <a href="{{ route('video', ['video' => $video['id'], 'slug' => $video['slug']]) }}"
-                                       class="d-flex flex-column m-3">
-                                        <label class="text-white">
-                                            <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
-                                            <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
-                                        </label>
-                                        <label class="text-white">
-                                            Uploaded By: {{ $video['uploader']['name'] }}
-                                        </label>
-                                    </a>
+                                <div class="row">
+                                    @foreach($videos as $video)
+                                        <div class="col-sm-6 col-md-3">
+                                            <a href="{{ route('video', ['video' => $video['id'], 'slug' => $video['slug']]) }}"
+                                               class="d-flex flex-column m-3">
+                                                <img style="width: 100%;max-height: 200px;"
+                                                     src="{{ $video['single_img'] }}"/>
+                                                <h5 class="text-white mt-2 fs-5">{{ $video['title'] }}</h5>
+                                                <label class="text-white">
+                                                    <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
+                                                    <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
+                                                </label>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

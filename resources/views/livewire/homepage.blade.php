@@ -46,19 +46,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="right_sidebar_area">
-                            <aside class="right_widget r_tag_widget">
-                                <div class="r_w_title">
-                                    <h3 class="text-white bg-info p-2">Popular Tags</h3>
-                                </div>
-                                <ul>
-                                    {{--                                    <li><a href="#">Creative</a></li>--}}
-                                    {{--                                    <li><a href="#">Unique</a></li>--}}
-                                    {{--                                    <li><a href="#">Photography</a></li>--}}
-                                    {{--                                    <li><a href="#">Music</a></li>--}}
-                                    {{--                                    <li><a href="#">Wordpress Template</a></li>--}}
-                                    {{--                                    <li><a href="#">Ideas</a></li>--}}
-                                </ul>
-                            </aside>
+                            <livewire:popular-tags/>
                         </div>
                     </div>
                 </div>
