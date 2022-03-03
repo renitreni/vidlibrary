@@ -26,20 +26,23 @@
                                     <h3 class="text-white bg-info p-2">{{ $video['title'] }}</h3>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <iframe width="100%" height="420" src="{{ str_replace('/d/', '/e/', $video['download_url']) }}" scrolling="no" frameborder="0"
+                                    <iframe width="100%" height="420"
+                                            src="{{ str_replace('/d/', '/e/', $video['download_url']) }}" scrolling="no"
+                                            frameborder="0"
                                             allowfullscreen="true">
                                         Your browser does not support the video tag.
                                     </iframe>
-                                    <a href="{{ route('video', ['video' => $video['id'], 'slug' => $video['slug']]) }}"
-                                       class="d-flex flex-column m-3">
-                                        <label class="text-white">
-                                            <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
-                                            <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
-                                        </label>
-                                        <label class="text-white">
-                                            Uploaded By: {{ $video['uploader']['name'] }}
-                                        </label>
-                                    </a>
+                                    <label class="text-white">
+                                        <i class="fa fa-eye"></i> {{ $video['views'] }} &nbsp;
+                                        <i class="fa fa-clock-o"></i> {{  Carbon\Carbon::parse($video['created_at'])->longAbsoluteDiffForHumans() }}
+                                    </label>
+                                    <label class="text-white d-flex">
+                                        Uploaded By:
+                                        <a class="btn ml-1 p-0 btn-link"
+                                           href="{{ route('search', ['uploader' => $video['uploader']['name']]) }}">
+                                            {{ $video['uploader']['name'] }}
+                                        </a>
+                                    </label>
                                 </div>
                             </div>
                         </div>

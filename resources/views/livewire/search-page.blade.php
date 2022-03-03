@@ -23,7 +23,7 @@
                         <div class="static_main_content">
                             <div class="d-flex flex-column">
                                 <div class="mb-2">
-                                    <h3 class="text-white bg-info p-2">Search: '{{ $tag ?? '' }}'</h3>
+                                    <h3 class="text-white bg-info p-2">Search: '{{ $tag ?? '' }} {{ $uploader ?? '' }}'</h3>
                                 </div>
                                 <div class="row">
                                     @foreach($videos as $video)
